@@ -4,6 +4,9 @@
 
 #pragma once
 
+#include <units/time.h>
+#include <units/voltage.h>
+
 /**
  * The Constants header provides a convenient place for teams to hold robot-wide
  * numerical or boolean constants.  This should not be used for any other
@@ -15,7 +18,58 @@
  */
 
 namespace OperatorConstants {
-
-inline constexpr int kDriverControllerPort = 0;
-
+    //Port numbers for driver and operator gamepads. These correspond with the numbers on the USB tab of the DriverStation
+    constexpr int kDriverControllerPort = 0;
+    constexpr int kOperatorControllerPort = 1;
 }  // namespace OperatorConstants
+
+namespace DrivetrainConstants {
+    //PWM ports/CAN IDs for motor controllers
+    constexpr int kLeftRearID = 2;
+    constexpr int kLeftFrontID = 1;
+    constexpr int kRightRearID = 4;
+    constexpr int kRightFrontID = 3;
+    constexpr int kTestID = 99;
+
+    //Current limit for drivetrain motors
+    //constexpr int kCurrentLimit = 60;
+}  // namespace DrivetrainConstants
+
+ namespace LauncherConstants {
+    //PWM ports/CAN IDs for motor controllers
+    constexpr int kFeederID = 5;
+    constexpr int kLauncherID = 6;
+    constexpr int kLauncherEncoderID = 99;
+
+    //Speeds for wheels when intaking and launching. Intake speeds are negative to run the wheels in reverse
+    constexpr double kLauncherSpeed = 1;
+
+    constexpr double kP = 0;
+    constexpr double kI = 0;
+    constexpr double kD = 0;
+    //counits::volt_t kShooterVoltage = 0_V;
+    // constexpr units::volt_t kReverseShooterVoltage = -6_V;
+    constexpr double kTopMotorSpeed = 1;
+    constexpr double kBottomMotorSpeed = 1;
+    constexpr double kIntakeLauncherSpeed = -1;
+    constexpr double kIntakeFeederSpeed = -.2;
+	
+	constexpr units::second_t kLauncherDelay = 1_s;
+
+
+} // namespace LauncherConstants
+ namespace IntakeConstants {
+
+    constexpr int kIntakeID = 3;
+    constexpr double kIntakeMotorSpeed = 1;
+    constexpr units::volt_t kIntakeVoltage = 6_V;
+    constexpr units::volt_t kReverseIntakeVoltage = -6_V;
+ }
+
+ namespace ShooterConstants {
+    constexpr int kShooterTopID = 1;
+    constexpr int kShooterBottomID = 2;
+    constexpr double kShooterMotorSpeed = 1;
+    constexpr units::volt_t kShooterVoltage = 8_V;
+    constexpr units::volt_t kReverseShooterVoltage = -8_V;
+ }
