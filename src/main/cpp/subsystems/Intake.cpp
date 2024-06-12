@@ -1,4 +1,5 @@
 #include "subsystems/Intake.h"
+#include "Constants.h"
 #include <iostream>
 
 Intake::Intake()
@@ -8,7 +9,7 @@ frc2::CommandPtr Intake::GetIntakeCommand() {
     return StartEnd(
 
         [this] {
-            SetIntakeMotor(IntakeConstants::kIntakeVoltage);
+            SetIntakeMotor(IntakeConstants::kIntakeMotorSpeed);
         },
 
         [this] { Stop(); });
@@ -19,15 +20,19 @@ frc2::CommandPtr Intake::GetReverseIntakeCommand() {
     return StartEnd(
 
         [this] {
-            SetIntakeMotor(IntakeConstants::kReverseIntakeVoltage);
+            SetIntakeMotor(IntakeConstants::kReverseIntakeMotorSpeed);
         },
 
         [this] { Stop(); });
     
 }
 
-void Intake::SetIntakeMotor(units::volt_t voltage){
-    m_intakeMotor.SetVoltage(voltage);
+// void Intake::SetIntakeMotor(units::volt_t voltage){
+//     m_intakeMotor.Set(ControlMode::Current, voltage);
+// }
+
+void Intake::SetIntakeMotor(double output){
+    m_intakeMotor.Set(ControlMode::PercentOutput, output);
 }
 
 void Intake::Stop(){

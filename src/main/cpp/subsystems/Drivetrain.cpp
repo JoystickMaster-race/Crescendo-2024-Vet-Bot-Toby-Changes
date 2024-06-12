@@ -17,10 +17,8 @@ Drivetrain::Drivetrain()
   // Invert left side motors so both sides drive forward with positive output
   // values
   
-  //m_frontLeft.ConfigPeakCurrentLimit(10, 10);
-    
-    
   m_backLeft.ConfigContinuousCurrentLimit(60, 0.1);
+  m_backRight.ConfigContinuousCurrentLimit(60, 0.1);
   m_backLeft.Follow(m_frontLeft, ctre::phoenix::motorcontrol::FollowerType::FollowerType_PercentOutput);
   m_backRight.Follow(m_frontRight, ctre::phoenix::motorcontrol::FollowerType::FollowerType_PercentOutput);
   

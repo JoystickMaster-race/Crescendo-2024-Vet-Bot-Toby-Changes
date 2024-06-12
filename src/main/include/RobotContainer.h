@@ -16,6 +16,7 @@
 #include "subsystems/Drivetrain.h"
 #include "subsystems/Intake.h"
 #include "subsystems/Shooter.h"
+#include "subsystems/Indexer.h"
 #include <frc/smartdashboard/SendableChooser.h>
 
 /**
@@ -32,6 +33,16 @@ class RobotContainer {
   frc2::CommandPtr GetAutonomousCommand();
 
  private:
+
+  Drivetrain m_drivetrain;
+  Intake m_intake;
+  ShooterPID m_shooter;
+  Indexer m_indexer;
+
+
+  frc2::CommandPtr m_GetToSpeedCommand = frc2::cmd::RunOnce([this]{m_shooter.Enable(); }, {&m_shooter});
+
+
   // Replace with CommandPS4Controller or CommandJoystick if needed
   frc2::CommandXboxController m_driverController{
       OperatorConstants::kDriverControllerPort};
@@ -41,9 +52,7 @@ class RobotContainer {
   frc::SendableChooser<frc2::Command*> m_chooser;
 
   // The robot's subsystems are defined here...
-  Drivetrain m_drivetrain;
-  Intake m_intake;
-  Shooter m_shooter;
+
 
   void ConfigureBindings();
 };

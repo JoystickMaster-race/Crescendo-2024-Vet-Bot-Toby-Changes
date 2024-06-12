@@ -16,11 +16,13 @@ frc2::CommandPtr GetIntakeCommand();
 frc2::CommandPtr GetReverseIntakeCommand();
 
 //void SetIntakeMotor(double speed);
-void SetIntakeMotor(units::volt_t voltage);
+//void SetIntakeMotor(units::volt_t voltage);
+void SetIntakeMotor(double output);
 void Stop();
 void OnUpdate(units::second_t);
 
  private:
 
- WPI_VictorSPX m_intakeMotor;
+// WPI_VictorSPX m_intakeMotor;
+TalonSRX m_intakeMotor;
 };
