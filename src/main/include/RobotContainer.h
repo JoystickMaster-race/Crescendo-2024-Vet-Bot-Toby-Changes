@@ -8,6 +8,7 @@
 #include <frc2/command/Commands.h>
 #include <frc2/command/CommandPtr.h>
 #include <frc2/command/button/CommandXboxController.h>
+#include <frc/smartdashboard/SendableChooser.h>
 
 #include "Constants.h"
 //#include "subsystems/PWMDrivetrain.h"
@@ -17,7 +18,8 @@
 #include "subsystems/Intake.h"
 #include "subsystems/Shooter.h"
 #include "subsystems/Indexer.h"
-#include <frc/smartdashboard/SendableChooser.h>
+#include "commands/TaxiAuto.h"
+#include "commands/IntakeAuto.h"
 
 /**
  * This class is where the bulk of the robot should be declared.  Since
@@ -30,7 +32,7 @@ class RobotContainer {
  public:
   RobotContainer();
 
-  frc2::CommandPtr GetAutonomousCommand();
+  frc2::Command* GetAutonomousCommand();
 
  private:
 
@@ -38,10 +40,12 @@ class RobotContainer {
   Intake m_intake;
   ShooterPID m_shooter;
   Indexer m_indexer;
-
-
+  frc::SendableChooser<frc2::Command*> m_chooser;
+  frc2::CommandPtr m_testAuto = autos::a_Test(&m_drivetrain);
+  TaxiAuto a_Taxi{&m_drivetrain};
+  IntakeAuto a_Intake{&m_intake};
+  
   frc2::CommandPtr m_GetToSpeedCommand = frc2::cmd::RunOnce([this]{m_shooter.Enable(); }, {&m_shooter});
-
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
   frc2::CommandXboxController m_driverController{
@@ -49,10 +53,8 @@ class RobotContainer {
   frc2::CommandXboxController m_operatorController{
       OperatorConstants::kOperatorControllerPort};    
 
-  frc::SendableChooser<frc2::Command*> m_chooser;
 
   // The robot's subsystems are defined here...
-
 
   void ConfigureBindings();
 };

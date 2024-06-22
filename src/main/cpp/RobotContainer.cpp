@@ -6,18 +6,30 @@
 
 #include <frc2/command/button/Trigger.h>
 #include <frc2/command/button/JoystickButton.h>
+#include <frc/shuffleboard/Shuffleboard.h>
+#include <frc/smartdashboard/SmartDashboard.h>
 
 
 #include "commands/Autos.h"
+#include "commands/TaxiAuto.h"
+#include "commands/IntakeAuto.h"
+
 #include "subsystems/Drivetrain.h"
 #include "subsystems/Intake.h"
+
 
 RobotContainer::RobotContainer() {
  // Initialize all of your commands and subsystems here
 
-  // m_chooser.SetDefaultOption("Simple Auto", &ExampleAuto);
-  // m_chooser.AddOption("Complex Auto", &autos::ScoreIntakeScore);
+  //raw pointer object style
+  m_chooser.SetDefaultOption("Taxi Auto", &a_Taxi);
+  m_chooser.AddOption("Intake Auto", &a_Intake);
 
+  //inline style
+  m_chooser.AddOption("Test Auto", m_testAuto.get());
+
+  frc::SmartDashboard::PutData(&m_chooser);
+  frc::Shuffleboard::GetTab("Autonomous").Add(m_chooser);
  // Configure the button bindings
   ConfigureBindings();
 
@@ -55,10 +67,8 @@ RobotContainer::RobotContainer() {
    m_operatorController.A().WhileTrue(m_GetToSpeedCommand.get());
   }
 
-// frc2::CommandPtr RobotContainer::GetAutonomousCommand() {
-//   // An example command will be run in autonomous
-//   return autos::ExampleAuto(&m_drivetrain);
-//   // return autos::AutoTIntake(&m_intake);
-  
-//   //return autos::ScoreIntakeScore(&m_drivetrain, &m_intake, &m_shooter);
-// }
+frc2::Command* RobotContainer::GetAutonomousCommand() {
+  // An example command will be run in autonomous
+  //return autos::a_Taxi(&m_drivetrain);
+ return m_chooser.GetSelected();
+}
