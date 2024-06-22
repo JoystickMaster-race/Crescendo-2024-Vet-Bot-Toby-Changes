@@ -22,15 +22,6 @@ Drivetrain::Drivetrain()
   m_backLeft.Follow(m_frontLeft, ctre::phoenix::motorcontrol::FollowerType::FollowerType_PercentOutput);
   m_backRight.Follow(m_frontRight, ctre::phoenix::motorcontrol::FollowerType::FollowerType_PercentOutput);
   
-  //frc::DifferentialDrive m_drive{m_frontLeft, m_frontRight};
-  // frc::DifferentialDrive m_drive{ [&](double output) {m_frontLeft;},
-  // [&](double output) {m_frontRight;}
-  // };
-  
-  
-  // frc::DifferentialDrive m_drive{m_frontLeft, m_frontRight};
-  //m_leftMotors.SetInverted(true);
-  //m_rightMotors.SetInverted(false);
 }
 
 // This method will be called once per scheduler run

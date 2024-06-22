@@ -30,20 +30,10 @@ class Drivetrain : public frc2::SubsystemBase {
   // Components (e.g. motor controllers and sensors) should generally be
   // declared private and exposed only through public methods.
   // The motor controllers
-  TalonSRX m_frontLeft{3};
-  TalonSRX m_backLeft{1};
-  TalonSRX m_frontRight{4};
-  TalonSRX m_backRight{2};
-  //WPI_VictorSPX m_testMotor{99};
-
-  
-
-  // The motors on the left side of the drive
-  //frc::MotorControllerGroup m_leftMotors{m_frontLeft, m_backLeft};
-
-
-  // The motors on the right side of the drive
-  //frc::MotorControllerGroup m_rightMotors{m_frontRight, m_backRight};
+  TalonSRX m_frontLeft;
+  TalonSRX m_backLeft;
+  TalonSRX m_frontRight;
+  TalonSRX m_backRight;
 
   // The robot's drive
   //frc::DifferentialDrive m_drive{m_frontLeft, m_frontRight};
