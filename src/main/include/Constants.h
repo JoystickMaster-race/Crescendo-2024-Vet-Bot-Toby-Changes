@@ -37,14 +37,14 @@ namespace DrivetrainConstants {
 }  // namespace DrivetrainConstants
 
  namespace IndexerConstants {
-    constexpr int kIndexID = 99;
+    //constexpr int kIndexID = 99;
     constexpr units::volt_t kIndexVoltage = 2_V;
     constexpr units::volt_t kReverseIndexVoltage = -2_V;
 
 
  }
  namespace IntakeConstants {
-
+    constexpr int kIndexID = 99;
     constexpr int kIntakeID = 99;
     constexpr double kIntakeMotorSpeed = 0.5;
     constexpr double kReverseIntakeMotorSpeed = -0.5;

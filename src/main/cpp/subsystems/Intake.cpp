@@ -2,8 +2,11 @@
 #include "Constants.h"
 #include <iostream>
 
-Intake::Intake()
-    : m_intakeMotor{IntakeConstants::kIntakeID} {}
+Intake::Intake() 
+    : m_intakeMotor{IntakeConstants::kIntakeID}, 
+      m_indexMotor{IntakeConstants::kIndexID} {
+        m_indexMotor.Follow(m_intakeMotor, ctre::phoenix::motorcontrol::FollowerType::FollowerType_PercentOutput);
+    }
 
 frc2::CommandPtr Intake::GetIntakeCommand() {
     return StartEnd(

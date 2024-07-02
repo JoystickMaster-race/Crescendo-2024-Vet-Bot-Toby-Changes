@@ -9,24 +9,16 @@
 #include <frc/shuffleboard/Shuffleboard.h>
 #include <frc/smartdashboard/SmartDashboard.h>
 
-
 #include "commands/Autos.h"
-#include "commands/TaxiAuto.h"
-#include "commands/IntakeAuto.h"
-
 #include "subsystems/Drivetrain.h"
 #include "subsystems/Intake.h"
 
 
 RobotContainer::RobotContainer() {
  // Initialize all of your commands and subsystems here
-
-  //raw pointer object style
-  m_chooser.SetDefaultOption("Taxi Auto", &a_Taxi);
-  m_chooser.AddOption("Intake Auto", &a_Intake);
-
   //inline style
-  m_chooser.AddOption("Test Auto", m_testAuto.get());
+  m_chooser.AddOption("Taxi Auto", m_testAuto.get());
+  m_chooser.AddOption("8 note auto red alliance", m_shootAuto.get());
 
   frc::SmartDashboard::PutData(&m_chooser);
   frc::Shuffleboard::GetTab("Autonomous").Add(m_chooser);
@@ -40,17 +32,6 @@ RobotContainer::RobotContainer() {
       },
       {&m_drivetrain}));
 
-  // m_shooter.SetDefaultCommand(frc2::cmd::Run(
-  //   [this] {
-  //     m_shooter.Stop();
-  //   },
-  //   {&m_shooter}));
-
-  // m_intake.SetDefaultCommand(frc2::cmd::Run(
-  //   [this] {
-  //     m_intake.Stop();
-  //   },
-  //   {&m_intake}));
    }
 
   void RobotContainer::ConfigureBindings() {
@@ -61,8 +42,8 @@ RobotContainer::RobotContainer() {
     } 
 
 
-   m_operatorController.RightBumper().WhileTrue(m_indexer.GetIndexCommand());
-   m_operatorController.LeftBumper().WhileTrue(m_indexer.GetReverseIndexCommand());
+  //  m_operatorController.RightBumper().WhileTrue(m_indexer.GetIndexCommand());
+  //  m_operatorController.LeftBumper().WhileTrue(m_indexer.GetReverseIndexCommand());
 
    m_operatorController.A().WhileTrue(m_GetToSpeedCommand.get());
   }

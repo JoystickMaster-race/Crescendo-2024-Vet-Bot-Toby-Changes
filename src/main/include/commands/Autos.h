@@ -4,14 +4,12 @@
 #pragma once
 #include <frc2/command/CommandPtr.h>
 #include "subsystems/Drivetrain.h"
+#include "subsystems/Shooter.h"
 #include <frc/smartdashboard/SendableChooser.h>
 
 
 namespace autos {
-    frc2::CommandPtr a_Test(Drivetrain* drivetrain);
+    frc2::CommandPtr a_Taxi(Drivetrain* drivetrain);
     
+    frc2::CommandPtr a_Shoot(ShooterPID* shooter);
 }
-
-
-
-

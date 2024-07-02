@@ -15,16 +15,6 @@
         SetSetpoint(ShooterConstants::kShooterTargetRPS.value());
     }
 
-
-// frc2::CommandPtr ShooterPID::GetToSpeedCommand(){
-//     return StartEnd(
-//         this {
-//             m_shooter.Enable(); 
-//         },
-//         {&m_shooter}
-//     );
-// }
-
 void ShooterPID::UseOutput(double output, double setpoint) {
     m_shooterTopMotor.SetVoltage(units::volt_t{output} + m_shooterFeedforward.Calculate(ShooterConstants::kShooterTargetRPS));
 
