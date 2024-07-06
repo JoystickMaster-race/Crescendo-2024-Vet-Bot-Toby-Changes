@@ -3,10 +3,13 @@
 #include <frc2/command/CommandPtr.h>
 #include <frc2/command/SubsystemBase.h>
 #include <frc2/command/PIDCommand.h>
+#include <frc/AnalogPotentiometer.h>
+#include <frc/Ultrasonic.h>
 #include "Constants.h"
 #include "ctre/Phoenix.h"
 #include <units/voltage.h>
 #include <units/time.h>
+#include <frc/AnalogPotentiometer.h>
 
 class Intake : public frc2::SubsystemBase {
  public:
@@ -25,5 +28,6 @@ void OnUpdate(units::second_t);
  
 TalonSRX m_intakeMotor;
 WPI_VictorSPX m_indexMotor;
+
 
 };

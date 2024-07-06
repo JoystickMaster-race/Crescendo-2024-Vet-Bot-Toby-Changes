@@ -12,13 +12,14 @@
 #include "commands/Autos.h"
 #include "subsystems/Drivetrain.h"
 #include "subsystems/Intake.h"
+#include "subsystems/Shooter.h"
 
 
 RobotContainer::RobotContainer() {
  // Initialize all of your commands and subsystems here
   //inline style
   m_chooser.AddOption("Taxi Auto", m_testAuto.get());
-  m_chooser.AddOption("8 note auto red alliance", m_shootAuto.get());
+  //m_chooser.AddOption("8 note auto red alliance", m_shootAuto.get());
 
   frc::SmartDashboard::PutData(&m_chooser);
   frc::Shuffleboard::GetTab("Autonomous").Add(m_chooser);
@@ -40,7 +41,6 @@ RobotContainer::RobotContainer() {
     } else if(m_operatorController.GetLeftY() > 0.05){
       m_intake.GetReverseIntakeCommand();
     } 
-
 
   //  m_operatorController.RightBumper().WhileTrue(m_indexer.GetIndexCommand());
   //  m_operatorController.LeftBumper().WhileTrue(m_indexer.GetReverseIndexCommand());

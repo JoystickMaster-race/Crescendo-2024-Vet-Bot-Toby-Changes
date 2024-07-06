@@ -7,6 +7,8 @@
 #include <units/time.h>
 #include <units/voltage.h>
 #include <units/angle.h>
+#include <frc/RobotController.h>
+#include <frc/AnalogInput.h>
 
 /**
  * The Constants header provides a convenient place for teams to hold robot-wide
@@ -46,6 +48,10 @@ namespace DrivetrainConstants {
  namespace IntakeConstants {
     constexpr int kIndexID = 99;
     constexpr int kIntakeID = 99;
+    constexpr int kIntakeSensorID = 0;
+    constexpr int kPingID = 0;
+    constexpr int kEchoID = 1;
+    
     constexpr double kIntakeMotorSpeed = 0.5;
     constexpr double kReverseIntakeMotorSpeed = -0.5;
     constexpr units::volt_t kIntakeVoltage = 6_V;

@@ -13,6 +13,7 @@
 #include <frc/Encoder.h>
 #include <frc/controller/SimpleMotorFeedforward.h>
 #include <networktables/NetworkTableInstance.h>
+#include <units/voltage.h>
 
 #include <memory>
 #include <string>
@@ -22,13 +23,20 @@ public:
     ShooterPID();
  
   //frc2::CommandPtr GetToSpeedCommand();
+  frc2::CommandPtr GetRawControlCommand();
+
   void UseOutput(double output, double setpoint) override;
 
+  void SetShooterMotor(units::volt_t voltage);
+
+  void Stop();
+  
   double GetMeasurement() override;
 
   bool AtSetpoint();
 
   void OnUpdate(units::second_t);
+
 
   //frc::CommandPtr GetToSpeedCommand();
 

@@ -8,6 +8,11 @@
 
 #include <frc/TimedRobot.h>
 #include <frc2/command/CommandPtr.h>
+#include <frc/AnalogInput.h>
+#include <frc/DigitalOutput.h>
+#include <frc/DigitalInput.h>
+#include <frc/smartdashboard/SmartDashboard.h>
+#include <frc/RobotController.h>
 
 #include "RobotContainer.h"
 

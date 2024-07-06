@@ -40,7 +40,7 @@ class RobotContainer {
   //Indexer m_indexer;
   frc::SendableChooser<frc2::Command*> m_chooser;
   frc2::CommandPtr m_testAuto = autos::a_Taxi(&m_drivetrain);
-  frc2::CommandPtr m_shootAuto = autos::a_Shoot(&m_shooter);
+  //frc2::CommandPtr m_shootAuto = autos::a_Shoot(&m_shooter);
   
   frc2::CommandPtr m_GetToSpeedCommand = frc2::cmd::RunOnce([this]{m_shooter.Enable(); }, {&m_shooter});
 

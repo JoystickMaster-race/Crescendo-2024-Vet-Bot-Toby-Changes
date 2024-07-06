@@ -5,7 +5,7 @@
 Intake::Intake() 
     : m_intakeMotor{IntakeConstants::kIntakeID}, 
       m_indexMotor{IntakeConstants::kIndexID} {
-        m_indexMotor.Follow(m_intakeMotor, ctre::phoenix::motorcontrol::FollowerType::FollowerType_PercentOutput);
+      m_indexMotor.Follow(m_intakeMotor, ctre::phoenix::motorcontrol::FollowerType::FollowerType_PercentOutput);
     }
 
 frc2::CommandPtr Intake::GetIntakeCommand() {
@@ -43,5 +43,6 @@ void Intake::Stop(){
 }
 
 void Intake::OnUpdate(units::second_t dt){
-   std::cout << "Voltage: " << IntakeConstants::kIntakeVoltage.value() << std::endl;
+  std::cout << "Voltage: " << IntakeConstants::kIntakeVoltage.value() << std::endl;
+
 }

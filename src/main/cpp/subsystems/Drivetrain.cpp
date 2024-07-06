@@ -26,7 +26,7 @@ Drivetrain::Drivetrain()
 
 // This method will be called once per scheduler run
 void Drivetrain::Periodic() {
-  std::cout << "Voltage: " << m_frontLeft.GetMotorOutputVoltage() << std::endl;
+  //std::cout << "Voltage: " << m_frontLeft.GetMotorOutputVoltage() << std::endl;
 }
 
 void Drivetrain::ArcadeDrive(double speed, double rotation) {

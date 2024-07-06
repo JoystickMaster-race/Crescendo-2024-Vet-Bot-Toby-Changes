@@ -5,8 +5,18 @@
 #include "Robot.h"
 
 #include <frc2/command/CommandScheduler.h>
+#include <iostream>
 
-void Robot::RobotInit() {}
+//frc::DigitalInput beam_break{0};
+// frc::AnalogInput ultrasonic_sensor_one{0};
+// frc::DigitalOutput ultrasonic_trigger_pin_one{0};
+
+// double ultrasonic_sensor_range_one = 0;
+// double voltage_scale_factor = 0;
+
+void Robot::RobotInit() {
+  //frc::SmartDashboard::PutNumber("Sensor 1 Range", 0);
+}
 
 /**
  * This function is called every 20 ms, no matter the mode. Use
@@ -17,7 +27,12 @@ void Robot::RobotInit() {}
  * LiveWindow and SmartDashboard integrated updating.
  */
 void Robot::RobotPeriodic() {
-  frc2::CommandScheduler::GetInstance().Run();
+  // frc2::CommandScheduler::GetInstance().Run();
+  // frc::SmartDashboard::PutNumber("Sensor 1 Range", ultrasonic_sensor_range_one);
+
+  // voltage_scale_factor = 5/frc::RobotController::GetVoltage5V();
+
+  // ultrasonic_sensor_range_one = ultrasonic_sensor_one.GetValue() * voltage_scale_factor * 0.125;
 }
 
 /**
@@ -57,7 +72,11 @@ void Robot::TeleopInit() {
 /**
  * This function is called periodically during operator control.
  */
-void Robot::TeleopPeriodic() {}
+void Robot::TeleopPeriodic() {
+  // if(beam_break.Get() == true){
+  //   std::cout << "broken" << std::endl;
+  // }
+}
 
 /**
  * This function is called periodically during test mode.

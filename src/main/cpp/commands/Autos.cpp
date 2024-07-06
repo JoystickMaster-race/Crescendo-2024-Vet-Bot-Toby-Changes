@@ -16,12 +16,6 @@ frc2::CommandPtr autos::a_Taxi(Drivetrain* drivetrain){
 }
 
 frc2::CommandPtr autos::a_Shoot(ShooterPID* shooter){
-    return frc2::cmd::Run([shooter] {shooter->UseOutput(1, ShooterConstants::kShooterTargetRPS.value()); },
-    {shooter});
-
-    //*setpoint attempts*
-    //Until(shooter.m_controller->AtSetpoint())
-    //.Until(std::function<bool>{shooter->AtSetpoint()});
-//.Until(std::function<bool>{ shooter->AtSetpoint()} == true);
-
+    return frc2::cmd::Run([shooter] {shooter->SetShooterMotor(6_V);}, {shooter} )
+.WithTimeout(2.0_s);
 }
